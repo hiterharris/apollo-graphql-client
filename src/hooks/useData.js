@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { gql, useQuery } from '@apollo/client';
 
 const GET_BOOKS = gql`
@@ -10,7 +11,23 @@ const GET_BOOKS = gql`
   }
 `;
 
+const GET_USERS = gql`
+  query GetUsers {
+    users {
+      id
+      name
+      email
+      username
+      password
+    }
+  }
+`;
+
+
+
 export const useData = () => {
-  const { data } = useQuery(GET_BOOKS);
-  return { data };
+  const { data: books } = useQuery(GET_BOOKS);
+  const { data: users } = useQuery(GET_USERS);
+
+  return { books, users };
 }
