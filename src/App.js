@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import './App.css';
+import { useData } from './helpers/useData';
 
-function App() {
+const App = () => {
+const { data } = useData();
+const [books, setBooks] = useState();
+
+useEffect(() => {
+  data.books.map(books => setBooks(books));
+}, [data]);
+
+console.log('data: ', data.books);
+console.log('books: ', books);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <h1>Books</h1>
+       {books.title} by {books.author}
     </div>
   );
-}
+};
 
 export default App;
