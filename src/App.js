@@ -11,9 +11,12 @@ const App = () => {
     setUsersList(users.users);
   }, [users]);
 
+  console.log('usersList: ', usersList);
+
   return (
     <div className="App">      
       <div className="users">
+        <h1>Users</h1>
         {usersList.map(user => {
           return (
             <div key={user.id}>
