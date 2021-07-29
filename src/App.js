@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import { useData } from './hooks/useData';
+import React, { useEffect, useState } from "react";
+import { useData } from "./hooks/useData";
 
 const App = () => {
-
   const { users } = useData();
   const [usersList, setUsersList] = useState();
 
@@ -11,13 +9,11 @@ const App = () => {
     setUsersList(users.users);
   }, [users]);
 
-  console.log('usersList: ', usersList);
-
   return (
-    <div className="App">      
-      <div className="users">
+    <div className="App" style={{ textAlign: "center" }}>
+      <div className="users" style={{ textDecoration: "underline" }}>
         <h1>Users</h1>
-        {usersList.map(user => {
+        {usersList?.map((user) => {
           return (
             <div key={user.id}>
               <h3>{user.name}</h3>
